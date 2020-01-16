@@ -1,0 +1,125 @@
+{% macro post(page) %}
+  <a class="post" href="{{page.permalink}}">
+    <h2 class="title">{{page.title}}</h2>
+    <span class="description">{{page.description}}</span>
+  </a>
+{% endmacro %}
+
+{% macro render_nav(current_path) %}
+    <div class="logo">
+      <a href="{{ config.base_url }}" target="_self">
+        Plant Biology
+      </a>
+    </div>    
+    <nav class="menu">
+        {% set path = current_path | truncate(length=5, end="") %}
+        <ul>
+            {% for item in config.extra.page_menu %}
+            <li>
+              <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}" target="_self">{{item.name}}</a>
+            </li>            
+            {% endfor %}
+        </ul>
+    </nav>
+{% endmacro %}
+
+{% macro post_link(page, section) %}
+  {% if page.draft %}
+  {% else %}   
+      {% if page.date %}
+        <section class="post-thumbnail">
+          {% set imagepath =page.extra.images %}
+          <img src="{{page.slug}}/{{imagepath }}" alt="livro">          
+          <section class="post-list-category">
+            {% for category in page.taxonomies.categories %}
+            <a class="category" href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">
+                {{ category }}
+              </a>
+            {% endfor %}
+          </section>
+        </section>
+        <header class="post-header"> 
+          <h2 class="post-title">
+              <a href="/{{section.components[0]}}/{{page.slug | safe}}/">
+                {{ page.title }}
+              </a>
+          </h2>
+          <time datetime="{{ page.date | date(format="%d-%m-%Y") }}" class="post-date">
+              {{ page.date | date(format="%d-%m-%Y") }}  
+          </time>
+        </header>       
+      {% endif %}
+  {% endif %}
+{% endmacro post_link %}
+
+{% macro post_nav(page, extra) %}
+    <nav class="post-navigation">
+        {% if page.earlier %}
+            <div id="nav-previous">
+                &laquo;
+                <i><a class="prev" href="/posts/{{page.earlier.slug | safe }}">{{page.earlier.title}}</a></i>
+            </div>            
+        {% endif %}
+        {% if page.later %}
+          <div id="nav-next">             
+              <i><a class="next" href="/posts/{{page.later.slug | safe }}">{{page.later.title}}</a></i>
+              &raquo;
+          </div> 
+        {% endif %}
+    </nav>
+{% endmacro %}
+{% macro render_taxonomies(taxonomies) %}
+    {{ macros::render_tags(tags=taxonomies.tags )}}
+    {{ macros::render_categories(categories=taxonomies.categories )}}
+{%endmacro %}
+
+{% macro render_tags(tags) %}
+    {% if tags %}
+      {{ config.extra.label_tags }}:
+      {% for tag in tags %}
+        {% if loop.last %}
+        <a classe="tag" href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{tag}}</a>
+        {% else %}
+        <a classe="tag" href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{tag}}</a>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% macro render_categories(categories) %}
+    {% if categories %}
+      
+      {% if categories | length > 1 %}
+      {{ config.extra.label_categories }}:
+        {% for category in categories %}
+          {% if loop.last %}
+          <a class="category" href="{{ get_taxonomy_url(kind="categories", name=categories[0]) | safe }}">
+            {{ categories[0] }}
+          </a>
+          {% else %}
+          <a class="category" href="{{ get_taxonomy_url(kind="categories", name=categories[0]) | safe }}">
+            {{ categories[0] }}
+          </a>
+          {% endif %}
+        {% endfor %}
+        
+      {% else %}
+      {{ config.extra.label_category }}:
+        <a class="category" href="{{ get_taxonomy_url(kind="categories", name=categories[0]) | safe }}">
+          {{ categories[0] }}
+        </a>
+      {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{% macro render_term(term) %}
+  <div class="row">
+    <tr>
+      <td><time datetime="{{ term.date }}">{{ term.date  }}</time></td>
+        {% if term.components[0] == "talks" %}
+          <td> (talk) </td>
+        {% endif %}
+      <td><a href="/{{ term.path }}">{{ term.title }}</a></td>
+    </tr>
+  </div>
+{% endmacro %}

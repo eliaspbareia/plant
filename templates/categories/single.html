@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% import "macro.html" as macros %}
+
+{% block main %}
+    <main class="main">
+      <h3 class="page-title"> {{config.extra.label_category}}: {{term.name}} </h3>
+        {% for page in term.pages %}
+            {{ macros::post(page=page) }}
+        {% endfor %}
+    </main>
+{% endblock main %}

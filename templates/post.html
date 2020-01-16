@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "macro.html" as macros %}
+
+{% block page %}{{page}} {% endblock page %}
+{% block title %}{{page.title}} | {{config.title}} {% endblock title %}
+{% block sumary %}{{page.extra.summary | safe | striptags }} {% endblock summary %}
+{% block keywords %}{{page.extra.keywords}} {% endblock keywords %}
+{% block permalink %}{{page.permalink}} {% endblock permalink %}
+
+{% block main %}
+    <h1 class="page-title">
+        <div class="title">{{page.title}}</div>
+        <div class="title-author">{{page.extra.author }}</div>
+        <div class="title-data"> {{ page.date | date(format="%m / %d / %Y")}}</div>
+   </h1>
+    <div class="extra">
+        {% if page.taxonomies %}
+            {{ macros::render_taxonomies(taxonomies=page.taxonomies) }}
+        {% endif %}
+    </div>
+    {{ page.content | safe }}
+{% endblock main %}
+{% block after_main %}
+{{ macros::post_nav(page=page, extra=config.extra) }}
+{% endblock after_main %}

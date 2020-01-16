@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+  background-color: whitesmoke; 
+}
+
+@font-face {
+  font-family: Chancery;
+  src: url('../fonts/BLKCHCRY.TTF')
+}
+
+
+.container {
+  width: 900px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.header {  
+  border: 1px solid black;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.header .logo {
+  font-family: Chancery, cursive, LiSu, sans-serif;
+  font-weight: 400;
+}
+
+.header .logo a{
+  color: #344953;
+  font-size: 48px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu ul li {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu ul li a {
+  color: #34495e;
+  font-size: 18px;
+}
+
+main {
+  /* width: calc(100% - 280px - 20px); */
+  max-width:  900px;
+  padding-top: 20px;
+  display: block;
+  clear: both;
+  
+}
+
+article, section {
+  display: block;
+}
+/* Lista de Artigos */
+.article {
+  max-width: 100%;
+  overflow: hidden;
+  clear: both;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+}
+
+@media (min-width: 1050px){
+  .article-list {
+    width: 292px;
+    min-height: 500px;
+  }
+}
+
+.article .post-thumbnail {
+  position: relative;
+  overflow: hidden; 
+}
+
+.article .post-thumbnail img {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.article .post-list-category {
+  background: #f4f4f4 !important;
+  position: absolute;
+  display: block;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 0;
+  font-size: .7em;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.article .post-list-category a {
+  color: gray !important;
+}
+
+.article .post-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (min-width: 1050px){
+  .article .post-title {
+    font-size: 1.6em;
+    font-weight: 300;
+    line-height: 1.2em;
+    text-align: center;
+    padding-bottom: 10px;
+    font-family: "Opens Sans", sans-serif;
+    color: #444;
+  }
+}
+
+.article .post-date {
+  display: block;
+  color: #000;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: .75em;
+  letter-spacing: .2em;
+}
+
+.article .post-title a {
+  color: #5a5a5a;
+}
+
+
+/* Fim lista de artigos */
+
+
+a:link {
+  text-decoration: none;
+}
+
+blockquote {
+  margin: 1.5em 13px;
+  background: #f0f0f0;
+  border: 1px solid #c2c2c2;
+  border-left: 7px solid #c2c2c2;
+  padding: 10px;
+  font-size: 12px;
+  font-family: tahoma;
+  color: #626262;
+}
+
+/* Notas de rodapé */
+main.footnote-definition, post.footnote-definition {
+  padding-left: 40px;
+  
+}
+
+main .footnote-definition:first-of-type, main .post .footnote-definition:first-of-type {
+  border-top: 2px dashed #c05b4d;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+main .footnote-definition sup.footnote-definition-label {
+  font-size: 100%;
+  position: unset;
+  top: unset;
+}
+
+main .footnote-definition p {
+  display: inline;
+  font-size: 12px;
+}
+
+/* Fim notas de rodapé */
+/* Conteúdo do post */
+main .post-footer {
+  margin-top: 20px;
+  border-top: 1px solid #e6e6e6;
+}
+
+h1.page-title, h2.title, h2#section-title {
+    font-family: 'IM Fell Great Primer SC', serif;
+  }
+
+h2.title {
+  color: #626262;
+}
+span.description {
+  padding-left: 10px;
+  font-family: 'Catamaran', sans-serif;
+  color: #c05b4d;
+}
+
+h1.page-title {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+}
+
+h1.page-title .title {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+h1.page-title .title-author {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 14px;
+}
+
+h1.page-title .title-data {
+  grid-column: 1;
+  grid-row: 3;
+  font-size: 12px;
+}
+
+div.title-author{
+  color: #1b95e0;
+}
+
+h1.page-title {
+  border-bottom: 1px solid #ccc;
+}
+/* Fim Conteúdo do post */
+/* Tags e Categorias */
+div.extra {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+div.extra a { 
+  background-color: #eef;
+  border-radius: .25em;
+  border: 1px #ccf solid;
+  padding: .1em .6em .1em;
+  display: inline;
+  color: #626262;
+}
+/* Tags e Categorias */
+
+/* Barra de navegação dos posts */
+/* (top 16, right 8, bottom 16, and left 8). */
+nav.post-navigation {
+  font-size: 15px;
+  margin-bottom: 10px !important;
+  font-family: 'Catamaran', sans-serif;
+}
+
+nav.post-navigation #nav-previous {
+  float: left;
+}
+
+nav.post-navigation #nav-next {
+  float: right;
+}
+nav.post-navigation #nav-previous, nav.post-navigation #nav-next{
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px){
+  nav.post-navigation #nav-previous, nav.post-navigation #nav-next{
+    float: none;
+    margin-bottom: 7px;
+  }
+}
+/* Fim Barra de navegação dos posts */

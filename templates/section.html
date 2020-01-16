@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "macro.html" as macros %}
+
+{% block title %}{{ section.title }}{% endblock title%}
+
+{% block main %}
+<div class="container section">
+    {% set section = get_section(path=section.components[0] ~ "/_index.md") %}
+    <h2 id="section-title">{{ section.title }}</h2>
+    
+    <div class="posts">
+        {% for page in section.pages %}
+            <article class="article article-list">
+                {{ macros::post_link(page=page, section=section) }}
+            </article>
+        {% endfor %}        
+    </div>
+</div>
+{% endblock main%}

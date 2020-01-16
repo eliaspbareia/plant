@@ -1,0 +1,51 @@
+# The URL the site will be built for
+base_url = "https://plantbiology.netlify.com"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = false
+
+title = "Plant Botany"
+description = "Blog sobre informações botanicas"
+default_language = "en"
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+
+rss_limit = 20
+generate_rss = true
+
+paginate_by = 5
+
+generate_categories_pages = true
+generate_tags_pages = true
+
+taxonomies = [
+  {name = "tags", rss = true},
+  {name = "categories", rss = true},
+]
+
+[extra]
+# Put all your custom variables here
+
+
+page_menu = [
+  {name='Início', url='/'},
+  {name='Posts', url='/posts/'},
+  {name='Contato', url='/contact/'}
+]
+author = {name = "Elias Gomes" }
+
+label_tags = "Tags"
+label_tag = "Tag"
+label_categories = "Categorias"
+label_category = "Categoria"
+label_next = "Próxima"
+label_previous = "Anterior"
+label_page = "Página"
+label_of = "de"
+label_minutes = "minutos"
